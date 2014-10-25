@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  
+  match '/auth/:provider/callback' => 'login#callback', via: [:get, :post]
+  get 'start/index', :constraints => { :subdomain => /.+/ }
+  root 'login#index', :constraints => { :subdomain => /.+/ }
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
